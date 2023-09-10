@@ -1,4 +1,10 @@
-import type { GatsbyConfig } from 'gatsby';
+import type { GatsbyConfig } from "gatsby";
+import "dotenv/config";
+import { cleanEnv, url } from "envalid";
+
+const env = cleanEnv(process.env, {
+  WORDPRESS_URL: url(),
+});
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -11,22 +17,22 @@ const config: GatsbyConfig = {
   graphqlTypegen: true,
   plugins: [
     {
-      resolve: 'gatsby-source-wordpress',
+      resolve: "gatsby-source-wordpress",
       options: {
-        url: '',
+        url: env.WORDPRESS_URL,
       },
     },
-    'gatsby-plugin-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-image",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-plugin-postcss",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'images',
-        path: './src/images/',
+        name: "images",
+        path: "./src/images/",
       },
-      __key: 'images',
+      __key: "images",
     },
   ],
 };
