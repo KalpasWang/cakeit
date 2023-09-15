@@ -2,12 +2,14 @@ import React from "react";
 import { Link } from "gatsby";
 import LogoImg from "../images/logo.svg";
 
-type Props = {};
+type Props = {
+  title: string;
+};
 
-export default function Logo({}: Props) {
+export default function Logo({ title }: Props) {
   return (
     <Link to="/">
-      <img src={LogoImg} width={150} alt="Logo" />
+      <img src={LogoImg} alt={title} width={150} />
     </Link>
   );
 }

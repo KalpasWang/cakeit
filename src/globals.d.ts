@@ -3,7 +3,7 @@ declare module "*.svg" {
   export default value;
 }
 
-export type MenuQuery = {
+export type MenuQueryData = {
   site: {
     siteMetadata: {
       title: string;
@@ -28,3 +28,5 @@ export type MenuQuery = {
     };
   };
 };
+
+export type MenuItem = MenuQueryData["wpMenu"]["menuItems"]["nodes"][0];
